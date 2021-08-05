@@ -17,7 +17,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = 0
 def _set_sqlite_pragma(dbapi_connection, connection_record):
     if isinstance(dbapi_connection, SQLite3Connection):
         cursor = dbapi_connection.cursor()
-        cursor.execute("PRAGMA foreign keys=ON")
+        cursor.execute("PRAGMA foreign_keys=ON")
         cursor.close()
 
 db = SQLAlchemy(app)
@@ -41,3 +41,45 @@ class BlogPost(db.Model):
     body = db.Column(db.String(200))
     date = db.Column(db.Date)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+
+# routes
+
+@app.route("/user", methods=["POST"])
+def create_user():
+    pass
+
+@app.route("/user/descending_id", methods=["GET"])
+def get_all_users_descending():
+    pass
+
+@app.route("/user/ascending_id", methods=["GET"])
+def get_all_users_ascending():
+    pass
+
+@app.route("/user/<user_id>", methods=["GET"])
+def get_user_by_id(user_id):
+    pass
+
+@app.route("/user/<user_id>", methods=["DELETE"])
+def delete_user_by_id(user_id):
+    pass
+
+@app.route("/blog_post/<user_id>", methods=["POST"])
+def create_blog_post(user_id):
+    pass
+
+@app.route("/blog_post/<user_id>", methods=["GET"])
+def get_all_blog_posts_of_user(user_id):
+    pass
+
+@app.route("/blog_post/<blog_post_id>", methods=["GET"])
+def get_blog_post_by_blog_id(blog_post_id):
+    pass
+
+@app.route("/blog_post/<blog_post_id>", methods=["DELETE"])
+def delete_blog_post_by_blog_id(blog_post_id):
+    pass
+
+if __name__ == "__main__":
+    app.run(debug=True)
