@@ -20,6 +20,9 @@ class LinkedList:
         print(ll_string)
 
     def insert_beginning(self, data):
+        if self.head is None:
+            self.head = Node(data, None)
+            self.last_node = self.head
         new_node = Node(data, self.head)
         self.head = new_node
 
@@ -27,18 +30,18 @@ class LinkedList:
         if self.head is None:
             self.insert_beginning(data)
 
-        if self.last_node is None:
-            node = self.head
-            while node.next_node:
-                print("iter", node.data)
-                node = node.next_node
-
-            node.next_node = Node(data, None)
-            self.last_node = node.next_node
-
-        else:
-            self.last_node.next_node = Node(data, None)
-            self.last_node = self.last_node
+        # if self.last_node is None:
+        #     node = self.head
+        #     while node.next_node:
+        #         print("iter", node.data)
+        #         node = node.next_node
+        #
+        #     node.next_node = Node(data, None)
+        #     self.last_node = node.next_node
+        #
+        # else:
+        self.last_node.next_node = Node(data, None)
+        self.last_node = self.last_node
 
 ll = LinkedList()
 ll.insert_beginning("data4")
