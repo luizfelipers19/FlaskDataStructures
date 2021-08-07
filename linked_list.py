@@ -44,6 +44,15 @@ class LinkedList:
         self.last_node.next_node = Node(data, None)
         self.last_node = self.last_node.next_node
 
+
+    def get_node_by_id(self,id):
+        node = self.head
+        while node:
+            if node.data["id"] is int(id):
+                return node.data
+            node = node.next_node
+        return None
+
 ll = LinkedList()
 ll.insert_beginning("data4")
 ll.insert_beginning("data3")
