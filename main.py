@@ -68,11 +68,11 @@ def get_all_users_descending():
     for user in users:
         all_users_ll.insert_beginning(
             {
-                "id":user.id,
-                "name":user.id,
-                "email":user.email,
-                "address":user.address,
-                "phone":user.phone,
+                "id": user.id,
+                "name": user.id,
+                "email": user.email,
+                "address": user.address,
+                "phone": user.phone,
             }
         )
 
