@@ -7,3 +7,24 @@ class Node:
 class BinarySearchTree:
     def __init__(self):
         self.root = None
+
+    def _insert_recursive(self, value, node):
+        if value < node.data:
+            if node.left is None:
+                node.left = Node(value)
+            else:
+                self._insert_recursive(value, node.left)
+        elif value > node.data:
+            if node.right is None:
+                node.right = Node(value)
+            else:
+                self._insert_recursive(value, node.right)
+        else: #if value is equal to Node.data, we will do nothing, because BSTs don't have duplicated values
+            return
+
+
+    def insert(self, value): #if our BST is empty, we will define our root node as a new Node, else, we invoke our recursive function to add the node
+        if self.root is None:
+            self.root = Node(value)
+        else:
+            self._insert_recursive(value, self.root)
