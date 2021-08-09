@@ -8,13 +8,13 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def _insert_recursive(self, value, node):
-        if value < node.data:
+    def _insert_recursive(self, data, node):
+        if data['id'] < node.data['id']: #comparing id's from our dictionaries
             if node.left is None:
                 node.left = Node(value)
             else:
                 self._insert_recursive(value, node.left)
-        elif value > node.data:
+        elif data['id'] > node.data['id']:
             if node.right is None:
                 node.right = Node(value)
             else:
@@ -23,8 +23,14 @@ class BinarySearchTree:
             return
 
 
-    def insert(self, value): #if our BST is empty, we will define our root node as a new Node, else, we invoke our recursive function to add the node
+    def insert(self, data): #if our BST is empty, we will define our root node as a new Node, else, we invoke our recursive function to add the node
         if self.root is None:
-            self.root = Node(value)
+            self.root = Node(data)
         else:
-            self._insert_recursive(value, self.root)
+            self._insert_recursive(data, self.root)
+
+    def search(self, blog_post_id):
+        blog_post_id = int(blog_post_id)
+        if self.root is None:
+            return False
+        return self._search_recursive(blog_post_id, self.root)
