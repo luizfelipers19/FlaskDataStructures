@@ -153,7 +153,7 @@ def create_blog_post(user_id):
     return jsonify({"message":"New blog Post created"})
 
 @app.route("/blog_post/<blog_post_id>", methods=["GET"])
-def get_all_blog_posts(blog_post_id):
+def get_one_blog_posts(blog_post_id):
     blog_posts = BlogPost.query.all()
     random.shuffle(blog_posts)
 
