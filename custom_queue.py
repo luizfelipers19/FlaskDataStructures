@@ -22,3 +22,7 @@ class Queue:
             return None
         removed = self.head
         self.head = self.head.next_node
+        if self.head is None:
+            self.tail = None
+        return removed
+    
